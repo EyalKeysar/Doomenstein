@@ -1,0 +1,8 @@
+Day 1 (2/4/23):
+    After about a week i have decided that I will create a sprite-based 3d game.
+     - Questions:
+        What will be the basic network model?
+        What will be the base Code Architecture?
+        What will be the Slavery level?
+        Will I implement encryption?
+        What will be the network security model? 
