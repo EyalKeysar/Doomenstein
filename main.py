@@ -1,23 +1,26 @@
 import pygame as pg
 import sys
 from settings import *
+from map import *
 
 class Game:
     def __init__(self):
         pg.init()
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
+        self.new_game() #3:38
         
     def new_game(self):
+        self.map = Map(self)
         pass
     
     def update(self):
-        pg.display.flip()
-        self.clock.tick(FPS)
+        pg.display.flip()  # Updates the screen with what we've drawn.
+        self.clock.tick(FPS) # Limits the game to 60 FPS.
         pg.display.set_caption("FPS: " + str(self.clock.get_fps()))
     
     def draw(self):
-        self.screen.fill('black')
+        self.screen.fill('blue')
         
     def events(self):
         for event in pg.event.get():
