@@ -51,9 +51,9 @@ class Player:
             
                   
     def draw(self):
-        pg.draw.line(self.game.screen, 'green', (self.x * TILESIZE, self.y * TILESIZE), 
-                    (self.x * TILESIZE + math.cos(self.angle) * WIDTH, 
-                    self.y * TILESIZE + math.sin(self.angle) * WIDTH), 2)
+        # pg.draw.line(self.game.screen, 'green', (self.x * TILESIZE, self.y * TILESIZE), 
+        #             (self.x * TILESIZE + math.cos(self.angle) * WIDTH, 
+        #             self.y * TILESIZE + math.sin(self.angle) * WIDTH), 2)
         pg.draw.circle(self.game.screen, 'blue', (int(self.x * TILESIZE), int(self.y * TILESIZE)), 15)
 
     def update(self):

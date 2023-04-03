@@ -3,6 +3,7 @@ import sys
 from settings import *
 from map import *
 from player import *
+from raycasting import *
 
 class Game:
     def __init__(self):
@@ -14,10 +15,13 @@ class Game:
         
     def new_game(self):
         self.map = Map(self)
+        print(self.map.world_map)
         self.player = Player(self)
+        self.raycasting = RayCasting(self)
     
     def update(self):
         self.player.update()
+        self.raycasting.update()
         pg.display.flip()  # Updates the screen with what we've drawn.
         self.delta_time = self.clock.tick(FPS)
         pg.display.set_caption("FPS: " + str(self.clock.get_fps()))
@@ -26,8 +30,8 @@ class Game:
     
     def draw(self):
         self.screen.fill('black')
-        self.map.draw()
-        self.player.draw()
+        # self.map.draw()
+        # self.player.draw()
         
     def events(self):
         for event in pg.event.get():

@@ -1,22 +1,35 @@
 import pygame as pg
+import math
 
 RES = WIDTH, HEIGHT = 1600, 900
 FPS = 60
+HALF_WIDTH = WIDTH // 2
+HALF_HEIGHT = HEIGHT // 2
+
 MAPNAME = 'map1.txt'
 MAPSDIR = 'maps'
 TILESIZE = 100
 
-PLAYER_POS = 1.5, 5  # MiniMap coordinates
+PLAYER_POS = 1.5, 4.5  # MiniMap coordinates
 PLAYER_ANG = 0
 PLAYER_SPD = 0.003
 PLAYER_ANG_VEL = 0.002
 
+FOV = math.pi / 3
+HALF_FOV = FOV / 2
+NUM_RAYS = WIDTH // 2
+HALF_NUM_RAYS = NUM_RAYS // 2
+DELTA_ANG = FOV / NUM_RAYS
+MAX_DEPTH = 20
+
+SCREEN_DIST = HALF_WIDTH / math.tan(HALF_FOV)
+SCALE = WIDTH // NUM_RAYS
 
 # Keys
 FORWARD_KEY = pg.K_w
 BACKWARDS_KEY = pg.K_s
-LEFT_KEY = pg.K_a
-RIGHT_KEY = pg.K_d
+LEFT_KEY = pg.K_d
+RIGHT_KEY =  pg.K_a
 
 ROT_LEFT_KEY = pg.K_LEFT
 ROT_RIGHT_KEY = pg.K_RIGHT
