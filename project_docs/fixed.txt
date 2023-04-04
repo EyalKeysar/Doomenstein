@@ -1,0 +1,2 @@
+Problem = fishbowl effect, when player sees a wall it appears as seen in a fisheye camera/lens.
+Fix = 

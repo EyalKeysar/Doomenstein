@@ -1,4 +1,4 @@
-Day 1 (2/4/23):
+Day 1 (2/4/23) 00:39:
     After about a week i have decided that I will create a sprite-based 3d game.
      - Questions:
         What will be the basic network model?
@@ -6,3 +6,9 @@ Day 1 (2/4/23):
         What will be the Slavery level?
         Will I implement encryption?
         What will be the network security model? 
+
+Day 2 (3/4/23) 2:23:
+    Now it draw a simplified 2d simulation of the map, I have also changed the map input because the parsing wasn't good for the wall collisions.
+
+Day 3 (4/4/23) 0:30:
+    3d very simple simulation, fishbowl effect fixed.

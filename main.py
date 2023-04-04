@@ -8,6 +8,7 @@ from raycasting import *
 class Game:
     def __init__(self):
         pg.init()
+        pg.display.set_icon(pg.image.load(LOGO_NAME))
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         self.delta_time = 1
@@ -15,7 +16,6 @@ class Game:
         
     def new_game(self):
         self.map = Map(self)
-        print(self.map.world_map)
         self.player = Player(self)
         self.raycasting = RayCasting(self)
     
@@ -24,7 +24,7 @@ class Game:
         self.raycasting.update()
         pg.display.flip()  # Updates the screen with what we've drawn.
         self.delta_time = self.clock.tick(FPS)
-        pg.display.set_caption("FPS: " + str(self.clock.get_fps()))
+        pg.display.set_caption("Doomenstein -FPS: " + str(self.clock.get_fps()))
     
     
     

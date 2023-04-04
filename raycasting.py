@@ -4,6 +4,9 @@ from settings import *
 
 
 class RayCasting:
+    
+    # This is a classic raycasting algorithm.
+    
     def __init__(self, game):
         self.game = game
         
@@ -59,6 +62,10 @@ class RayCasting:
                 
             # pg.draw.line(self.game.screen, 'green', (ox * TILESIZE, oy * TILESIZE),
             #             (ox * TILESIZE + depth * cos_a * TILESIZE, oy * TILESIZE + sin_a * TILESIZE * depth), 2)
+            
+            
+            # Fisheye effect
+            depth *= math.cos(self.game.player.angle - ray_angle)
             
             # Projection
             proj_height = SCREEN_DIST / (depth + 0.0001)

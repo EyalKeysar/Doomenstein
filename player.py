@@ -13,24 +13,25 @@ class Player:
         player_angle_cos = math.cos(self.angle)
         deltax, deltay = 0, 0
         speed = PLAYER_SPD * self.game.delta_time
-        speed_sin = speed * player_angle_sin
-        speed_cos = speed * player_angle_cos
+        speed_factored_sin = speed * player_angle_sin
+        speed_factored_cos = speed * player_angle_cos
         
         # Movement
         keys = pg.key.get_pressed()
         if(keys[FORWARD_KEY]):
-            deltax += speed_cos
-            deltay += speed_sin
+            deltax += speed_factored_cos
+            deltay += speed_factored_sin
         if(keys[BACKWARDS_KEY]):
-            deltax -= speed_cos
-            deltay -= speed_sin
+            deltax -= speed_factored_cos
+            deltay -= speed_factored_sin
         if(keys[LEFT_KEY]):
-            deltax -= speed_sin
-            deltay += speed_cos
+            deltax += speed_factored_sin
+            deltay -= speed_factored_cos
         if(keys[RIGHT_KEY]):
-            deltax += speed_sin
-            deltay -= speed_cos
+            deltax -= speed_factored_sin
+            deltay += speed_factored_cos
 
+        # Check walls and move player accordingly.
         self.check_walls_collision(deltax, deltay)
         
         # Rotation        
@@ -42,13 +43,20 @@ class Player:
         self.angle %= 2 * math.pi
 
     def check_walls(self, x, y):
+        """
+            Check if the coordinates are a wall.
+            Returns True is its -NOT- a wall.
+        """
         return (x, y) not in self.game.map.world_map
+    
     def check_walls_collision(self, deltax, deltay):
-        if(self.check_walls(int(self.x + deltax), int(self.y))):
+        """
+            Move player deltay in y axis and deltax in x axis and according to the walls in the map.
+        """
+        if(self.check_walls(int(self.x + deltax), int(self.y))): # If the next position x axis is not a wall, move in the x axis.
             self.x += deltax
-        if(self.check_walls(int(self.x), int(self.y + deltay))):
+        if(self.check_walls(int(self.x), int(self.y + deltay))): # If the next position y axis is not a wall, move in the y axis.
             self.y += deltay  
-            
                   
     def draw(self):
         # pg.draw.line(self.game.screen, 'green', (self.x * TILESIZE, self.y * TILESIZE), 
