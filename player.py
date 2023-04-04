@@ -53,9 +53,10 @@ class Player:
         """
             Move player deltay in y axis and deltax in x axis and according to the walls in the map.
         """
-        if(self.check_walls(int(self.x + deltax), int(self.y))): # If the next position x axis is not a wall, move in the x axis.
+        scale = PLAYER_SIZE_SCALE / self.game.delta_time
+        if(self.check_walls(int(self.x + deltax * scale), int(self.y))): # If the next position x axis is not a wall, move in the x axis.
             self.x += deltax
-        if(self.check_walls(int(self.x), int(self.y + deltay))): # If the next position y axis is not a wall, move in the y axis.
+        if(self.check_walls(int(self.x), int(self.y + deltay * scale))): # If the next position y axis is not a wall, move in the y axis.
             self.y += deltay  
                   
     def draw(self):
@@ -64,8 +65,17 @@ class Player:
         #             self.y * TILESIZE + math.sin(self.angle) * WIDTH), 2)
         pg.draw.circle(self.game.screen, 'blue', (int(self.x * TILESIZE), int(self.y * TILESIZE)), 15)
 
+    def mouse_control(self):
+        mx, my = pg.mouse.get_pos()
+        if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
+            pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
+        self.rel = pg.mouse.get_rel()[0]
+        self.rel = max(-MOUSE_MAX_REL, min(MOUSE_MAX_REL, self.rel))
+        self.angle += self.rel * MOUSE_SENSITIVITY * self.game.delta_time
+
     def update(self):
         self.movement()
+        self.mouse_control()
         
     @property
     def pos(self):
