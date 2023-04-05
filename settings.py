@@ -2,7 +2,7 @@ import pygame as pg
 import math
 
 RES = WIDTH, HEIGHT = 1600, 900
-FPS = 60
+FPS = 63
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
 
@@ -10,7 +10,7 @@ LOGO_NAME = 'resources/logo.png'
 
 MAPNAME = 'map1.txt'
 MAPSDIR = 'maps'
-TILESIZE = 100
+TILESIZE = 50
 
 PLAYER_POS = 1.5, 2  # MiniMap coordinates
 PLAYER_ANG = 0

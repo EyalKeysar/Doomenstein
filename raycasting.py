@@ -74,7 +74,7 @@ class RayCasting:
             deltay = delta_depth * sin_a
             
             for i in range(MAX_DEPTH):
-                tile_vert = int(x_vert), int(y_vert)
+                tile_vert = int(x_vert), int(y_vert) # Int casting rounds down.
                 if(tile_vert in self.game.map.world_map):
                     texture_vert = self.game.map.world_map[tile_vert]
                     break
