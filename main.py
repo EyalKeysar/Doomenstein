@@ -10,6 +10,7 @@ from object_renderer import *
 class Game:
     def __init__(self):
         pg.init()
+        pg.mouse.set_visible(False)
         pg.display.set_icon(pg.image.load(LOGO_NAME))
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
