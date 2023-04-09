@@ -15,6 +15,7 @@ class Game:
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
         self.delta_time = 1
+        self.was_in_menu = False
         self.menus_handler = MenusHandler(self.screen)
         self.new_game()
         
@@ -34,15 +35,25 @@ class Game:
     
     
     def draw(self):
-        self.screen.fill('black') 
+        self.screen.fill('black')
         
         self.object_renderer.draw()
-        pg.draw.circle(self.screen, 'green', (HALF_WIDTH, HALF_HEIGHT), 5, 5)
+        pg.draw.circle(self.screen, AIM_BAR_COLOR, (HALF_WIDTH, HALF_HEIGHT), 5, 5)
         
+        # Draw helth bar.
+        pg.draw.rect(self.screen, HEALTH_BAR_COLOR, (HEALTH_BAR_DIST, HEALTH_BAR_HEIGHT, self.player.health * (WIDTH - HEALTH_BAR_DIST*2)/PLAYER_HEALTH, HEALTH_BAR_WIDTH))
+        # Draw health text.
+        pg.font.init()
+        text_font = pg.font.SysFont('Arial', 30)
+        text_sur = text_font.render(str(self.player.health), True, HEALTH_TEXT_COLOR)
+        self.screen.blit(text_sur, ((self.player.health * (WIDTH - HEALTH_BAR_DIST*2)/PLAYER_HEALTH)/2 - text_sur.get_width()/2, HEALTH_BAR_HEIGHT))
+        
+
         # self.map.draw()
         # self.player.draw()
         
     def events(self):
+        self.was_in_menu = False
         # Check for exit keys.
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -51,6 +62,7 @@ class Game:
             if(event.type == pg.KEYDOWN):
                 if(event.key == pg.K_q):
                     self.menus_handler.open_menu()
+                    self.was_in_menu = True
                 if(event.key == pg.K_ESCAPE):
                     pg.quit()
                     sys.exit()
