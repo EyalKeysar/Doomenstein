@@ -1,2 +1,5 @@
 Problem = fishbowl effect, when player sees a wall it appears as seen in a fisheye camera/lens.
 Fix = 
+
+Problem = slow rendering and code in general when using the mouse.
+Fix = I consider the screen as normal cartesian system when the 0, 0 is in the left bottom, but it was in left top.

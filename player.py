@@ -67,7 +67,7 @@ class Player:
 
     def mouse_control(self):
         mx, my = pg.mouse.get_pos()
-        if(my < MOUSE_BORDER_DOWN or my > MOUSE_BORDER_UP):
+        if(my > MOUSE_BORDER_DOWN or my < MOUSE_BORDER_UP):
             pg.mouse.set_pos([mx, HALF_HEIGHT])
         if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
             pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
