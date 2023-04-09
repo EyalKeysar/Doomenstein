@@ -10,13 +10,13 @@ class MenusHandler():
     def mouse_init(self):
         self.saved_mouse_pos = pg.mouse.get_pos()
         self.was_visible = pg.mouse.get_visible()
-        pg.mouse.set_pos(HALF_WIDTH, HALF_HEIGHT)
+        if(not self.was_visible):
+            pg.mouse.set_pos(HALF_WIDTH, HALF_HEIGHT)
         pg.mouse.set_visible(True)
-    
     def mouse_close(self):
         pg.mouse.set_visible(self.was_visible)
         pg.mouse.set_pos(self.saved_mouse_pos)
-    
+
     def open_menu(self):
         self.mouse_init()
         
@@ -37,10 +37,10 @@ class MenusHandler():
         while run:
             for event in pg.event.get():
                 if event.type == pg.KEYDOWN:
-                    if event.key == pg.K_ESCAPE:
+                    if event.key == pg.K_a:
                         run = False
                         pg.mouse.set_visible(False)
-                        pg.mouse.set_pos(x, y)
+                        pg.mouse.set_pos(self.saved_mouse_pos)
                     if event.key == FORWARD_KEY:
                         current += 1
         self.mouse_close()

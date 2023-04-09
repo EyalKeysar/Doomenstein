@@ -23,4 +23,13 @@ class ObjectRenderer:
         return {
             1: self.get_texture(TEXTURES_DIR + '1.png'),
             2: self.get_texture(TEXTURES_DIR + '2.png'),
+            3: self.get_texture(TEXTURES_DIR + '3.png'),
+            4: self.get_texture(TEXTURES_DIR + '4.png'),
+            5: self.get_texture(TEXTURES_DIR + '5.png'),
+            6: self.get_texture(TEXTURES_DIR + '6.png'),
+            7: self.get_texture(TEXTURES_DIR + '7.png'),
+            8: self.get_texture(TEXTURES_DIR + '8.png'),
+            9: self.get_texture(TEXTURES_DIR + '9.png'),
+            10: self.get_texture(TEXTURES_DIR + '10.png'),
+            11: self.get_texture(TEXTURES_DIR + '11.png')
         }

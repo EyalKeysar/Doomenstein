@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 class Button(ABC):
     @abstractmethod
-    def __init__(self, text: str, color: tuple(int, int, int)) -> None:
+    def __init__(self, text: str, color: tuple(int, int, int), ) -> None:
         self.color = color
         self.text = text
     
