@@ -19,19 +19,18 @@ class Player:
         
         # Movement
         keys = pg.key.get_pressed()
-        if(not self.game.was_in_menu):
-            if(keys[FORWARD_KEY]):
-                deltax += speed_factored_cos
-                deltay += speed_factored_sin
-            if(keys[BACKWARDS_KEY]):
-                deltax -= speed_factored_cos
-                deltay -= speed_factored_sin
-            if(keys[LEFT_KEY]):
-                deltax += speed_factored_sin
-                deltay -= speed_factored_cos
-            if(keys[RIGHT_KEY]):
-                deltax -= speed_factored_sin
-                deltay += speed_factored_cos
+        if(keys[FORWARD_KEY]):
+            deltax += speed_factored_cos
+            deltay += speed_factored_sin
+        if(keys[BACKWARDS_KEY]):
+            deltax -= speed_factored_cos
+            deltay -= speed_factored_sin
+        if(keys[LEFT_KEY]):
+            deltax += speed_factored_sin
+            deltay -= speed_factored_cos
+        if(keys[RIGHT_KEY]):
+            deltax -= speed_factored_sin
+            deltay += speed_factored_cos
         if(keys[pg.K_2] and self.health%2 == 0):
             self.remove_health(1)
         if(keys[pg.K_1] and self.health%2 == 1):
@@ -63,7 +62,7 @@ class Player:
         if(self.check_walls(int(self.x + deltax * scale), int(self.y))): # If the next position x axis is not a wall, move in the x axis.
             self.x += deltax
         if(self.check_walls(int(self.x), int(self.y + deltay * scale))): # If the next position y axis is not a wall, move in the y axis.
-            self.y += deltay  
+            self.y += deltay 
 
     def draw(self):
         # pg.draw.line(self.game.screen, 'green', (self.x * TILESIZE, self.y * TILESIZE), 
@@ -79,7 +78,7 @@ class Player:
             pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
         self.rel = pg.mouse.get_rel()[0]
         self.rel = max(-MOUSE_MAX_REL, min(MOUSE_MAX_REL, self.rel))
-        self.angle += self.rel * MOUSE_SENSITIVITY * self.game.delta_time
+        self.angle += self.rel * self.game.mouse_sensitivity * self.game.delta_time
 
     def remove_health(self, amount):
         if(self.health - amount <= 0):
