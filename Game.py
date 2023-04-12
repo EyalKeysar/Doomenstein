@@ -66,6 +66,11 @@ class Game:
                 if(event.key == pg.K_ESCAPE):
                     pg.quit()
                     sys.exit()
+            if(event.type == pg.MOUSEMOTION):
+                if(pg.mouse.get_pos()[0] < HALF_WIDTH/2 or pg.mouse.get_pos()[0] > HALF_WIDTH + HALF_WIDTH/2 or pg.mouse.get_pos()[1] < HALF_HEIGHT/2 or pg.mouse.get_pos()[1] > HALF_HEIGHT + HALF_HEIGHT/2):
+                    pg.mouse.set_pos(HALF_WIDTH, HALF_HEIGHT)
+                
+                    
     
     def run(self):
         i = 0
@@ -73,6 +78,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
+            
             
 if __name__ == '__main__':
     g = Game()

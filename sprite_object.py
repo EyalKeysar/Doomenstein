@@ -2,7 +2,7 @@ import pygame as pg
 from settings import *
 
 class SpriteObject:
-    def __init__(self, game, path=SPRITE_PATH, pos=(5, 5), scale=0.7, shift=0.27):
+    def __init__(self, game, path=SPRITE_PATH, pos=(5, 5), scale=0.8, shift=0.2):
         self.game = game
         self.player = game.player
         self.x, self.y = pos
