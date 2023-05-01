@@ -26,6 +26,7 @@ class Game:
         self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
         self.static_sprite = SpriteObject(self)
+        self.static_bullet = SpriteObject(self, )
     
     def update(self):
         self.player.update()
