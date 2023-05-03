@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+from threading import Thread
 from settings import *
 from map import *
 from player import *
@@ -8,7 +9,7 @@ from object_renderer import *
 from MenuArc.SettingsMenu import *
 from sprite_object import *
 
-class Game:
+class Game():
     def __init__(self):
         pg.init()
         self.mouse_sensitivity = MOUSE_SENSITIVITY
@@ -26,7 +27,7 @@ class Game:
         self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
         self.static_sprite = SpriteObject(self)
-        self.static_bullet = SpriteObject(self, )
+        #self.static_bullet = SpriteObject(self, )
     
     def update(self):
         self.player.update()
@@ -34,9 +35,13 @@ class Game:
         self.static_sprite.update()
         
         pg.display.flip()  # Updates the screen with what we've drawn.
-        self.delta_time = self.clock.tick(FPS)
-        # Title.
-        pg.display.set_caption("Doomenstein -FPS: " + str(self.clock.get_fps()))
+        
+        try:
+            self.delta_time = self.clock.tick(FPS)
+            # Title.
+            pg.display.set_caption("Doomenstein -FPS: " + str(self.clock.get_fps()))
+        except Exception as e:
+            print("error: " + str(e))
     
     
     def draw(self):
@@ -74,13 +79,11 @@ class Game:
                     
     
     def run(self):
-        i = 0
         while True:
-            self.events()
-            self.update()
-            self.draw()
-            
-            
-if __name__ == '__main__':
-    g = Game()
-    g.run()
+            try:
+                self.events()
+                self.update()
+                self.draw()
+            except Exception as e:
+                print("error: " + str(e))
+         

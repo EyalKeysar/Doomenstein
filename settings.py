@@ -19,7 +19,7 @@ HEALTH_BAR_WIDTH = 50
 HEALTH_BAR_HEIGHT = 30
 HEALTH_TEXT_COLOR = 'white'
 
-PLAYER_POS = 1, 1  # MiniMap coordinates
+PLAYER_POS = 1.2, 1.2  # MiniMap coordinates
 PLAYER_ANG = 0
 PLAYER_SPD = 0.004
 PLAYER_ANG_VEL = 0.002
